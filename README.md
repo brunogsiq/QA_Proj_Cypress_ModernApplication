@@ -1,1 +1,1 @@
-# QA_Proj_Cypress_ModernApplication
+# QA_Learn_Cypress_Modern_Application.
