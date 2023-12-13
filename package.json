@@ -1,0 +1,20 @@
+{
+  "name": "01_modern_application",
+  "version": "1.0.0",
+  "description": "Udemy - Testes de Aplicações Modernas Com Cypress - Prfº Francisco Wagner Costa Aquino",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open",
+    "test2": "npx cypress run",
+    "open": "cypress open"
+  },
+  "author": "Bruno Gonçalves Siqueira",
+  "license": "MIT",
+  "devDependencies": {
+    "@faker-js/faker": "^8.1.0",
+    "cypress": "^13.3.0",
+    "cypress-wait-until": "^1.7.2",
+    "cypress-xpath": "^2.0.1"
+  },
+  "keywords": []
+}
