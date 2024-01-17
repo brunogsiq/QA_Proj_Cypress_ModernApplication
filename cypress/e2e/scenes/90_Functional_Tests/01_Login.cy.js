@@ -1,4 +1,4 @@
-/// <reference types="cypress"/>
+/// <reference types="cypress" /> 
 
 import { elemTelaCampoDeTrein } from "../../libraries/pageObjects/campoDeTreinamento";
 import { faker } from '@faker-js/faker'
@@ -13,7 +13,7 @@ context("Real Application", () =>
 
     describe('01 - Web - BarrigaReacT', () =>
     {
-        it('01.01 - Tela de Login - Validar Acesso', () =>
+        it('01.01 - Tela de Login - Validar Acesso a Tela Home', () =>
         {
             cy.get(".btn")
                 .should("be.exist")
@@ -21,7 +21,7 @@ context("Real Application", () =>
                 .and("have.text", "Entrar")
         });
 
-        it('01.02 - Tela de Cadastro - Validar Acesso', () =>
+        it('01.02 - Tela de Cadastro - Validar Acesso a Tela Cadastrar', () =>
         {
             cy.get(".navbar-nav > li > a").eq(1)
                 .click()
@@ -356,6 +356,17 @@ context("Real Application", () =>
     {
         it('04.01 - Tela de Extrato - Validar Critérios de Aceite', () =>
         {
+            cy.get(".input-group > input")
+                .type("brunogsiq.freelancer@gmail.com")
+            cy.get(".form-group > input")
+                .type("VaiCorinthians")
+            cy.get(".btn")
+                .click()
+
+            cy.waitUntil(()=> 
+                cy.get(".thead-inverse")
+                    .should("be.visible"))
+
             //Menu Superior
             cy.get(".navbar-brand")
                 .should("be.exist")
@@ -368,22 +379,49 @@ context("Real Application", () =>
             cy.get(".navbar-nav > li").eq(0)
                 .should("be.exist")
                 .and("be.visible")
-                .should("have.prop", "alt", "logo")
+                cy.get(".navbar-nav > li > a > i").eq(0)
+                    .should("have.prop", "title", "Home")
 
             cy.get(".navbar-nav > li").eq(1)
                 .should("be.exist")
                 .and("be.visible")
-                .should("have.prop", "alt", "logo")
+                cy.get(".navbar-nav > li > a > i").eq(1)
+                    .should("have.prop", "title", "Cadastrar movimentação")
 
             cy.get(".navbar-nav > li").eq(2)
                 .should("be.exist")
                 .and("be.visible")
-                .should("have.prop", "alt", "logo")
+                cy.get(".navbar-nav > li > a > i").eq(2)
+                    .should("have.prop", "title", "extrato")
 
             cy.get(".navbar-nav > li").eq(3)
                 .should("be.exist")
                 .and("be.visible")
-                .should("have.prop", "alt", "logo")
+                cy.get(".navbar-nav > li > a > i").eq(3)
+                    .should("have.prop", "title", "settings")
+
+            cy.get(".thead-inverse > tr > th").eq(0)
+                .should("be.visible")
+                .and("have.text", "Conta")
+                .and("have.css", "color", "rgb(255, 255, 255)")
+                .and("have.css", "background-color", "rgb(33, 37, 41)")
+
+            cy.get(".thead-inverse > tr > th").eq(1)
+                .should("be.visible")
+                .and("have.text", "Saldo")
+                .and("have.css", "background-color", "rgb(33, 37, 41)")
+
+            cy.get("tbody > tr > td").eq(0)
+                .should("be.visible")
+                .and("have.text", "Total")
+                .and("have.css", "color", "rgb(33, 37, 41)")
+                .and("have.css", "background-color", "rgba(0, 0, 0, 0)")
+
+            cy.get("tbody > tr > td").eq(1)
+                .should("be.visible")
+                .and("contain.text", "R$")
+                .and("have.css", "color", "rgb(33, 37, 41)")
+                .and("have.css", "background-color", "rgba(0, 0, 0, 0)")
         });
     })
 
@@ -414,19 +452,81 @@ context("Real Application", () =>
         });
     })
 
-    describe('06 - Web - BarrigaReact - Inserir Movimentação', () =>
+    describe.only('06 - Web - BarrigaReact - Inserir Movimentação', () =>
     {
-        
+        it('06.01 - Tela de Movimentação - Validar Acesso a Tela de Movimentação', () => {
+            cy.get(".input-group > input")
+                .type("brunogsiq.freelancer@gmail.com")
+            cy.get(".form-group > input")
+                .type("VaiCorinthians")
+            cy.get(".btn")
+                .click()
+
+            cy.get(".nav-item > a > i").eq(1)
+                .click()
+                .waitUntil(()=>
+                    cy.get("div > .row > div > button").eq(0)
+                        .should("be.visible"))
+
+            cy.get("div > button").eq(3)
+                .should("be.visible")
+        });
+
+        it('06.02 - Tela de Movimentação - Validar Critérios de Aceite', () =>
+        {
+            cy.get(".input-group > input")
+                .type("brunogsiq.freelancer@gmail.com")
+            cy.get(".form-group > input")
+                .type("VaiCorinthians")
+            cy.get(".btn")
+                .click()
+
+            cy.get(".nav-item > a > i").eq(1)
+                .click()
+                .waitUntil(()=>
+                    cy.get("div > .row > div > button").eq(0)
+                        .should("be.visible"))
+
+            cy.get("div > .row > div > button").eq(0)
+                .should("be.visible")
+
+            cy.get()
+                .should("be.visible")
+
+            cy.get()
+                .should("be.visible")
+
+            cy.get()
+                .should("be.visible")
+
+            cy.get()
+                .should("be.visible")
+
+            cy.get()
+                .should("be.visible")
+
+            cy.get()
+                .should("be.visible")
+
+            cy.get()
+                .should("be.visible")
+
+            cy.get()
+                .should("be.visible")
+
+            cy.get("div > button").eq(3)
+                .should("be.visible")
+        })
     })
 
-    describe('07 - Web - BarrigaReact - Cálculo de saída', () =>
-    {
+    // describe('07 - Web - BarrigaReact - Cálculo de saída', () =>
+    // {
         
-    })
+    // })
 
-    describe('08 - Web - BarrigaReact - Remover Movimentação', () =>
-    {
+    // describe('08 - Web - BarrigaReact - Remover Movimentação', () =>
+    // {
         
-    })
+    // })
 })
 
