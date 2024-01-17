@@ -23,15 +23,3 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import 'cypress-wait-until'
-
-Cypress.Commands.add('cyref', ('/// <reference types="cypress"/>'))
-
-//Fazendo o primeiro comando:
-Cypress.Commands.add('clickAlert', (locator, message) => {
-  cy.get(locator).click()
-  cy.on('window:alert', msg => {
-    expect(msg).to.be.equal(message)
-  })
-})
-
