@@ -7,7 +7,7 @@ module.exports = defineConfig({
   e2e: {
     //defaultCommandTimeout: 9000,
     experimentalRunAllSpecs: true,
-    hideXHRInCommandLog: true,
+    //hideXHRInCommandLog: true,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },

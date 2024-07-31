@@ -2,6 +2,7 @@
 
 import { elemTelaCampoDeTrein } from "../../libraries/pageObjects/campoDeTreinamento";
 import { faker } from '@faker-js/faker'
+import loc from "../../../support/locators"
 
 context("Real Application", () =>
 {
@@ -18,7 +19,7 @@ context("Real Application", () =>
             cy.get(".btn")
                 .should("be.exist")
                 .and("be.visible")
-                .and("have.text", "Entrar")
+                .and("have.", "Entrar")
         });
 
         it('01.02 - Tela de Cadastro - Validar Acesso a Tela Cadastrar', () =>
